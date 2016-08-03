@@ -41,18 +41,28 @@ describe('Thermostat', function(){
 
     it('can be switched on', function(){
       thermostat.switchPowerSaveOff();
+      expect(thermostat.isPowerSaveOn()).toBe(false);
       thermostat.switchPowerSaveOn();
       expect(thermostat.isPowerSaveOn()).toBe(true);
     });
   });
   describe('sets maximum temperature', function() {
 
-    it('of 25 when power save is on', function(){
-      for(var i=0; i < 6; i++){
+    it('of 25 when power save is on and t is below 25', function(){
+      for(var i=0; i < 7; i++){
         thermostat.up();
       }
       expect(thermostat.getCurrentTemperature()).toEqual(25);
     });
+
+    it('of 25 when power save is on and t is above 25', function(){
+      thermostat.switchPowerSaveOff();
+      for(var i=0; i < 7; i++){
+        thermostat.up();
+      }
+      expect(thermostat.getCurrentTemperature()).toEqual(25);
+    });
+
 
     it('of 32 when power save is off', function(){
       thermostat.switchPowerSaveOff();
