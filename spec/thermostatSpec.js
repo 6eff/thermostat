@@ -40,10 +40,19 @@ describe('Thermostat', function(){
     thermostat.switchPowerSaveOn();
     expect(thermostat.isPowerSaveOn()).toBe(true);
   });
+
   it('has a maximum temperature of 25 when power save is on', function(){
     for(var i=0; i < 6; i++){
       thermostat.up();
     }
     expect(thermostat.getCurrentTemperature()).toEqual(25);
+  });
+
+  it('has a maximum temperautre of 32 when power save is off', function(){
+    thermostat.switchPowerSaveOff();
+  for(var i=0; i<13; i++) {
+    thermostat.up();
+  }
+  expect(thermostat.getCurrentTemperature()).toEqual(32);
   });
 });
