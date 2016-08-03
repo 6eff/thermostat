@@ -85,6 +85,7 @@ describe('Thermostat', function(){
     });
     describe('when temperautre is above 25', function() {
       it('is considered high usage', function() {
+        thermostat.switchPowerSaveOff();
         for(var i=0; i < 6; i++) {
           thermostat.up();
         }

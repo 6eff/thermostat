@@ -2,11 +2,21 @@
 
 function Thermostat (){
   this.temperature = 20;
-  this.MINIMUM_TEMPERATURE = 10;
   this.powerSave = true;
+  this.MINIMUM_TEMPERATURE = 10;
+  this.TEMP_FOR_MEDIUM_USAGE = 18;
   this.MAXIMUM_TEMP_POWERSAVE_ON = 25;
   this.MAXIMUM_TEMP_POWESAVE_OFF = 32;
 }
+Thermostat.prototype.energyUsage = function(){
+  if (this.temperature < this.TEMP_FOR_MEDIUM_USAGE) {
+    return 'low';
+  }
+  if (this.temperature >= this.TEMP_FOR_MEDIUM_USAGE && this.temperature <= this.MAXIMUM_TEMP_POWERSAVE_ON) {
+    return 'medium';
+  }
+  return 'high';
+};
 
 Thermostat.prototype.getCurrentTemperature = function () {
   return this.temperature;
