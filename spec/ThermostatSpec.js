@@ -1,4 +1,5 @@
-'use strict';
+/* jslint node: true */ 'use strict';
+
 
 describe('Thermostat', function() {
 
@@ -54,7 +55,7 @@ describe('Thermostat', function() {
 
   describe('when power saving mode is on', function() {
     it('it has a maximum temperature', function() {
-      thermostat.temperature = 20 //have to set default to 20 on the test so max limit when PSM is on, which is 25, test still works. If default is higher than max limit tests fail.
+      thermostat.temperature = 20; //have to set default to 20 on the test so max limit when PSM is on, which is 25, test still works. If default is higher than max limit tests fail.
       for(var i = 0; i < thermostat.MAX_LIMIT_PSM_ON; i++) {
         thermostat.up();
       }

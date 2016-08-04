@@ -1,4 +1,4 @@
-'use strict';
+/*jslint node: true */ 'use strict';
 
 function Thermostat() {
   this.DEFAULT_TEMPERATURE = 30;
