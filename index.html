@@ -4,20 +4,26 @@
 <head>
 	<meta charset="utf-8">
 	<title>Thermostat</title>
+  <script src="jquery-3.1.0.js"></script>
+  <script src = "interface.js"></script>
+    <link href="src/energyUsage.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 	<section>
-		<h1>temperature</h1>
+		<h1 id="temperature">
+
+    </h1>
 		<p>
-			<button id="temperature-up">+</button>
-			<button id="temperature-down">-</button>
+			<button id="temp-up">+</button>
+			<button id="temp-down">-</button>
       <button id="reset">RESET</button>
-			Power saving mode <span id="power-saving_mode">ON</span>
+			Power saving mode <span id="power-saving-mode">ON</span>
 			<button id="power-saving-on">PSM ON</button>
 			<button id="power-saving-off">PSM OFF</button>
 		</p>
 	</section>
+  <script src="src/Thermostat.js"></script>
 </body>
 
 </html>
