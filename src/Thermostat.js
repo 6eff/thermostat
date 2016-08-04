@@ -1,12 +1,13 @@
 /*jslint node: true */ 'use strict';
 
 function Thermostat() {
-  this.DEFAULT_TEMPERATURE = 30;
+  this.DEFAULT_TEMPERATURE = 20;
   this.temperature = this.DEFAULT_TEMPERATURE;
   this.MINIMUM_TEMPERATURE = 10;
   this.powerSavingMode = true;
   this.MAX_LIMIT_PSM_ON = 25;
   this.MAX_LIMIT_PSM_OFF = 32;
+  this.LOW_ENERGY_TEMP = 18;
 }
 
 Thermostat.prototype.getCurrentTemperature = function() {
@@ -52,4 +53,14 @@ Thermostat.prototype.isMaximumTemperature = function() {
 
 Thermostat.prototype.resetTemperature = function() {
   this.temperature = this.DEFAULT_TEMPERATURE;
-}
+};
+
+Thermostat.prototype.energyUsage = function() {
+  if (this.temperature <= this.LOW_ENERGY_TEMP) {
+    return ('low-usage');
+  }
+  if (this.temperature >= this.LOW_ENERGY_TEMP && this.temperature <= this.MAX_LIMIT_PSM_ON) {
+    return ('medium-usage');
+  }
+  return ('high-usage');
+};

@@ -72,4 +72,23 @@ describe('Thermostat', function() {
       expect(thermostat.getCurrentTemperature()).toEqual(thermostat.MAX_LIMIT_PSM_OFF);
     });
   });
+
+  describe('display energy usage', function() {
+    it('when temperature is below 18 degrees', function() {
+      for (var i = 0; i < 3; i++) {
+        thermostat.down();
+      }
+      expect(thermostat.energyUsage()).toEqual('low-usage');
+    });
+    it('when temperature is between 18 and 25 degrees', function() {
+      expect(thermostat.energyUsage()).toEqual('medium-usage');
+    });
+    it('when temperature is above 25 degrees', function() {
+      thermostat.switchPowerSavingModeOff();
+      for (var i = 0; i < 6; i++) {
+        thermostat.up();
+      }
+      expect(thermostat.energyUsage()).toEqual('high-usage');
+    });
+  });
 });
