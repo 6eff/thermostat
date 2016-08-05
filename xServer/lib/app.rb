@@ -16,7 +16,8 @@ class XServer < Sinatra::Base
   end
 
   get '/send' do
-    { time: Time.now.to_s }.to_json
+    response = ReceiverAPI.last
+    { thermostat_temp: response.thermostat_temp.to_s, psm: response.psm }.to_json
   end
 
   run! if app_file == $0
