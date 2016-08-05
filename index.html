@@ -3,29 +3,129 @@
   <script src="src/thermostat.js"></script>
     <script src="lib/jQuery.js"></script>
     <script src="lib/interface.js"></script>
-  <title> Thermostat </title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:500,700,500italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Rubik:400,500,500italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'>
+    <title> Thermostat </title>
   <style>
-  * {color: #404040;}
-  button {background: rgba(255,255,255,0);
-        border: 2px solid #404040;
-        border-radius: 4px;
-        width: 100px;}
-body {background: #fff;}
-h1 {font-size: 26px;}
-  #color {background: red}
+    * {
+      color: #404040;
+      font-family: 'Lato', helvetica, arial, sans-serif;
+      margin: 0px;
+      font-size: 16px;
+      text-align: center;
+      text-rendering: optimizeLegibility;
+      letter-spacing: 2px;
+      }
+    button, input {
+      background: #404040;
+      padding-bottom: 2px;
+      color: #fff;
+      border: 2px solid #404040;
+      border-radius: 14px;
+      width: 110px;
+      height: 30px;
+      margin-left: 3px; margin-right: 3px;
+      display: inline;
+      }
+      button:hover, input[type="submit"]:hover {
+        border: 2px solid #f7f7f7;
+        background: rgba(255,255,255,0.5);
+        color: #404040;
+      }
+    input[type='text'] {width: 200px;}
+    body {
+      /*background: #fff;*/
+      background: rgb(240, 230, 120);
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+      padding: 0px;
+      }
+
+    main {flex: 1; margin-left: 20px;}
+    h1 span, p span {font-weight: bold;}
+    h1 {font-weight: normal;}
+    #title {
+      color: #fff;
+            width: 100%;
+            height: 2em;
+            padding-top: 38px;
+            padding-left: 20px;
+            font-size: 40px;
+            font-family: 'Rubik';
+            letter-spacing: 2px;
+
+            }
+    .control_buttons {margin-left: 20px;}
+    /*.thermostat-info p { display: inline; height: 100%}*/
+    #temperature, .degs {
+                  font-family: 'Raleway';
+                  font-size: 120px;
+                  display: inline;}
+                  .degs {margin-left: -8px;}
+    footer {border-top: 1px solid #fff;
+            padding: 14px;
+            padding-bottom: 32px;
+            background: rgba(255, 255, 255, 0.4);
+    }
+    header {
+
+            padding-bottom: 0.5em;
+          }
+    .city {text-align: left;}
+    .spacer {height: 1px;
+             width: 40%;
+             border-bottom: 1px solid #fff;
+             margin: 21px auto 0px auto}
+    .spacer_top {height: 1px;
+                 width: 40%;
+                 border-bottom: 1px solid #fff;
+                 margin: 0px auto 18px auto}
   </style>
 </head>
-<body>
+<body id="bgGrade">
+  <header id="headr">
+    <h1 id="title">ThermoStat App Demo</h1>
+        <div class="spacer_top"></div>
+    <section class="control_buttons">
+      <button class="color" id="up">Up</button>
+      <button class="color" id="down">Down</button>
+      <button class="color" id="switchPSMOn">PSM: On</button>
+      <button class="color" id="switchPSMOff">PSM: Off</button>
+      <button class="color" id="resetTemp">Reset</button>
+    </section>
+    <div class="spacer"></div>
+  </header>
+  <main>
 
-  <button id="up">up</button>
-  <button id="down">down</button>
-  <button id="switchPSMOn">PSM: on </button>
-  <button id="switchPSMOff">PSM: off</button>
-  <button id="resetTemp"> reset </button>
+  <section class="thermostat-info">
+    <p id="temperature"></p><p class="degs">&deg;</p>
+    <!-- <p> Temperature, <span ></span></p> -->
+    <p> Power saving mode, <span id="power-saving-status"></span></p>
+    <p>Energy mode, <span id="usage-status"></span></p>
+  </secton>
 
-  <p> Temperature <span id="temperature"> </span> </p>
-  <p> Power saving mode <span id="power-saving-status"></span> </p>
-  <p id="color"> Color</p>
+  <section>
+    <p class="city">
+    <h1>Current temperature is <span id="current-temperature">Loading...</span><span>&deg;</span> in <span id="current-city">Loading...</span></h1>
+    <h1><span id="outlook">Loading...</span></h1>
+  </p>
+      <br>
+      <form id="select-city">
+        <input id="city" type="text" placeholder="Enter City Name"></input>
+        <input type="submit"></input>
+      </form>
+  </section>
+  </main>
+
+
+
+
+
+  <footer class="sticky_footer">
+    <p id="debug">A little demo app made with JQuery, DOM scripting, some APIs &amp; love. &#10084;</p>
+  </footer>
 
 </body>
 

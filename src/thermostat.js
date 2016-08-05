@@ -18,15 +18,19 @@ Thermostat.prototype = {
     return this._temp;
   },
   tempUp: function() {
-    if (!this.isMaxTemp())
+    if (!this.isMaxTemp()) {
       this._temp += 1;
+      return true;
+    }
   },
   isMaxTemp: function() {
     return this.getCurrentTemp() === this.MAX_TEMP;
   },
   tempDown: function() {
-    if (!this.isMinTemp())
+    if (!this.isMinTemp()) {
       this._temp--;
+      return true;
+    }
   },
   isMinTemp: function() {
     return this.getCurrentTemp() === this.MIN_TEMP;
