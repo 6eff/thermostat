@@ -11,7 +11,7 @@ function Thermostat() {
   this.MEDIUM_ENERGY_USAGE_LIMIT = 18;
   this.HIGH_ENERGY_USAGE_LIMIT = 25;
   this.usage;
-};
+}
 
 Thermostat.prototype = {
   getCurrentTemp: function() {
@@ -20,7 +20,7 @@ Thermostat.prototype = {
   tempUp: function() {
     if (!this.isMaxTemp()) {
       this._temp += 1;
-      return true;
+      return this._temp;
     }
   },
   isMaxTemp: function() {
@@ -28,8 +28,8 @@ Thermostat.prototype = {
   },
   tempDown: function() {
     if (!this.isMinTemp()) {
-      this._temp--;
-      return true;
+      this._temp -=1 ;
+      return this._temp;
     }
   },
   isMinTemp: function() {
@@ -37,6 +37,9 @@ Thermostat.prototype = {
   },
   switchPSMOn: function() {
     this.PSM = true;
+    if (this._temp > 25) {
+      this._temp = 25;
+    }
     this.maxTemp();
   },
   isPowerSavingModeOn: function() {
@@ -69,4 +72,4 @@ Thermostat.prototype = {
       }
   },
 
-}
+};
