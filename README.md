@@ -1,7 +1,6 @@
 # Thermostate
 
-# Thermostate
-simple JavaScript app that uses HTML, CSS and JQuiry.
+##### Simple JavaScript app that uses HTML, CSS and JQuiry.
 
 To run:
 * clone this repo
